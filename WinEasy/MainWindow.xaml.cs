@@ -128,5 +128,10 @@ namespace ScreenCut
                 CmdManager.removeSCmdToRightMenu();
             }
         }
+
+        private void btnOpenGitHub_Clicked(object sender, RoutedEventArgs e)
+        {
+            Process.Start("https://github.com/bestyize/WinEasy");
+        }
     }
 }

@@ -18,7 +18,7 @@
                 </LinearGradientBrush>
             </Border.Background>
         </Border>
-        <Label Content="从来不想" HorizontalAlignment="Center" FontWeight="ExtraBold" Background="Transparent" Foreground="White" Margin="118,21,110,551"/>
+        <Label Content="WinEasy" HorizontalAlignment="Center" FontSize="14" FontWeight="ExtraBold" Background="Transparent" Foreground="White" Margin="118,21,110,551"/>
         <Button x:Name="btnClose" Width="15" Height="15" Margin="280,0,0,580" Foreground="White" Click="btnClose_Click" BorderThickness="0">
             <Button.Background>
                 <ImageBrush ImageSource="close.png"/>

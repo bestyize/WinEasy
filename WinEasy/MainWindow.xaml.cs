@@ -4,18 +4,21 @@ using System.Diagnostics;
 using System;
 using Microsoft.Win32;
 using ScreenCut.src.model;
+using ScreenCut.src.view;
 
 namespace ScreenCut
 {
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window,NotifyEventListener
     {
         int startUp = 0;
         public MainWindow()
         {
+
             InitializeComponent();
+            this.WindowStartupLocation= WindowStartupLocation.CenterScreen;
             initView();
         }
 
@@ -63,11 +66,13 @@ namespace ScreenCut
                 bool success = WindowsDenfenderManager.closeWindowsDefenderManager();
                 if (success)
                 {
-                    MessageBox.Show("关闭Windows Defender成功！重启生效");
+                    notifyUser("关闭Windows Defender成功！重启生效");
+                    //MessageBox.Show("关闭Windows Defender成功！重启生效");
                 }
                 else
                 {
-                    MessageBox.Show("失败，请以管理员权限运行");
+                    notifyUser("失败，请以管理员权限运行");
+                    //MessageBox.Show("失败，请以管理员权限运行");
                     return;
                 }
             }
@@ -76,17 +81,20 @@ namespace ScreenCut
                 bool success = WindowsDenfenderManager.openWindowsDefenderManager();
                 if (success)
                 {
-                    MessageBox.Show("开启Windows Defender成功！重启生效");
+                    notifyUser("开启Windows Defender成功！重启生效");
+                    //MessageBox.Show("开启Windows Defender成功！重启生效");
                 }
                 else
                 {
-                    MessageBox.Show("失败，请以管理员权限运行");
+                    notifyUser("失败，请以管理员权限运行");
+                    //MessageBox.Show("失败，请以管理员权限运行");
                     return;
                 }
             }
         }
 
         private void initView() {
+            
             bool isOpen = WindowsDenfenderManager.isOpen();
             if (isOpen) {
                 startUp = 2;
@@ -132,6 +140,22 @@ namespace ScreenCut
         private void btnOpenGitHub_Clicked(object sender, RoutedEventArgs e)
         {
             Process.Start("https://github.com/bestyize/WinEasy");
+        }
+
+
+        private void notifyUser(string content) {
+            NotifyWindow notifyWindow = new NotifyWindow("Windows Defender",content,this);
+            notifyWindow.Show();
+        }
+
+        public void onOkClicked()
+        {
+            //throw new NotImplementedException();
+        }
+
+        public void onCancelClicked()
+        {
+            //throw new NotImplementedException();
         }
     }
 }

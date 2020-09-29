@@ -17,12 +17,12 @@
                     <GradientStop Color="#111111"/>
                 </LinearGradientBrush>
             </Border.Background>
-            
+
 
         </Border>
-        <Button x:Name="btnCancel" Content="取消" FontWeight="Bold" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top" Width="188" Height="42" Background="Transparent" Foreground="#D4237A" BorderThickness="0" Click="btnCancel_Click"/>
+        <Button x:Name="btnCancel" Content="取消" FontWeight="Bold" HorizontalAlignment="Left" Margin="19,150,0,0" VerticalAlignment="Top" Width="179" Height="42" Background="Transparent" Foreground="#D4237A" BorderThickness="0" Click="btnCancel_Click"/>
         <Button x:Name="btnOk" Content="确定" FontWeight="Bold" HorizontalAlignment="Left" Margin="203,150,0,0" VerticalAlignment="Top" Width="178" Height="42"  Background="Transparent" Foreground="#1296DB" BorderThickness="0" Click="btnOk_Click"/>
         <Label x:Name= "lbTitle" HorizontalAlignment="Center" Content="" Background="Transparent" Foreground="White" Margin="171,0,171,165"/>
-        <Label x:Name="lbContent" Content="" Foreground="White" Background="#1E1E1E" Margin="19,50"/>
+        <TextBox x:Name="tbContent" Text="" Foreground="White" Background="#1E1E1E" Margin="19,50" TextWrapping="Wrap" />
     </Grid>
 </Window>

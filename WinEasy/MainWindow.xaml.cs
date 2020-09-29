@@ -157,5 +157,11 @@ namespace ScreenCut
         {
             //throw new NotImplementedException();
         }
+
+        private void btnAbout_Click(object sender, RoutedEventArgs e)
+        {
+            NotifyWindow notify = new NotifyWindow("关于", "WinEasy是一款提高Windows效率的软件,已经开源在GitHub上，当前版本为1.0.1，支持设置命令行、截图工具到右键，支持一键开启或关闭Windows Defender 后续会继续更新，欢迎持续关注。\r\n\r\n \t\t\t\t\t\t By-亦泽", null);
+            notify.Show();
+        }
     }
 }

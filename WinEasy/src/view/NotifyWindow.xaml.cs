@@ -27,7 +27,7 @@ namespace ScreenCut.src.view
             
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            lbContent.Content = content;
+            tbContent.Text = content;
             lbTitle.Content = title;
             this.listener = listener;
         }
@@ -38,13 +38,19 @@ namespace ScreenCut.src.view
 
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
-            listener.onOkClicked();
+            if (listener != null) {
+                listener.onOkClicked();
+            }
+            
             this.Close();
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            listener.onCancelClicked();
+            if (listener != null)
+            {
+                listener.onCancelClicked();
+            }
             this.Close();
         }
     }

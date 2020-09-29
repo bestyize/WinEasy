@@ -29,13 +29,19 @@
                 <ImageBrush ImageSource="minus.png"/>
             </Button.Background>
         </Button>
+
+        <Button x:Name="btnAbout" Margin="3,0,279,581" Foreground="White"  BorderThickness="0" Click="btnAbout_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="about.png"/>
+            </Button.Background>
+        </Button>
         <Grid Background="#1E1E1E" Height="50" Margin="0,65,0,485" >
             <Image Height="20" Source="cut.png"  Margin="20,0,260,0" />
             <Label Content="添加截图工具到右键" Foreground="White" Margin="45,12,125,13" FontSize="13"/>
             <CheckBox x:Name="cbScreenShot" Content="" HorizontalAlignment="Left" Margin="255,20,0,0" VerticalAlignment="Top" BorderThickness="0" ClipToBounds="True" Foreground="White" Background="#FF1296DB" RenderTransformOrigin="1,0.357" Width="14" Checked="cbScreenShot_Checked" Unchecked="cbScreenShot_Checked"/>
         </Grid>
 
-        <Grid Background="#1E1E1E" Height="50" Margin="0,130,0,400" >
+        <Grid Background="#1E1E1E" Height="50" Margin="0,130,0,400">
             <Image Height="20" Source="terminal_fill.png"  Margin="20,0,260,0" />
             <Label Content="添加命令行到右键" Foreground="White" Margin="45,12,125,13" FontSize="13"/>
             <CheckBox x:Name="cbCmd" Content="" HorizontalAlignment="Left" Margin="255,20,0,0" VerticalAlignment="Top" BorderThickness="0" ClipToBounds="True" Foreground="White" Background="#FFD4237A" Checked="cbCmd_Checked" Unchecked="cbCmd_Checked"/>

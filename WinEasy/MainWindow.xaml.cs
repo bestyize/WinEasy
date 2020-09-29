@@ -5,6 +5,7 @@ using System;
 using Microsoft.Win32;
 using ScreenCut.src.model;
 using ScreenCut.src.view;
+using System.Threading.Tasks;
 
 namespace ScreenCut
 {
@@ -13,6 +14,8 @@ namespace ScreenCut
     /// </summary>
     public partial class MainWindow : Window,NotifyEventListener
     {
+        private bool shouldUpdate = false;
+        private UpdateInfo updateInfo = null;
         int startUp = 0;
         public MainWindow()
         {
@@ -20,6 +23,7 @@ namespace ScreenCut
             InitializeComponent();
             this.WindowStartupLocation= WindowStartupLocation.CenterScreen;
             initView();
+            checkUpdate();
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
@@ -151,6 +155,9 @@ namespace ScreenCut
         public void onOkClicked()
         {
             //throw new NotImplementedException();
+            if (shouldUpdate && updateInfo != null) {
+                Process.Start(updateInfo.downloadLink);
+            }
         }
 
         public void onCancelClicked()
@@ -162,6 +169,31 @@ namespace ScreenCut
         {
             NotifyWindow notify = new NotifyWindow("关于", "WinEasy是一款提高Windows效率的软件,已经开源在GitHub上，当前版本为1.0.1，支持设置命令行、截图工具到右键，支持一键开启或关闭Windows Defender 后续会继续更新，欢迎持续关注。\r\n\r\n \t\t\t\t\t\t By-亦泽", null);
             notify.Show();
+        }
+
+        private void checkUpdate() {
+            Task updateTask = new Task(() =>
+            {
+                updateInfo = UpdateCheck.checkUpdate();
+                this.Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    if (updateInfo != null)
+                    {
+                        if (updateInfo.version.CompareTo("1.0.1") > 0) {
+                            shouldUpdate = true;
+                            NotifyWindow notifyWindow = new NotifyWindow("更新提醒", updateInfo.desc, this);
+                            notifyWindow.Show();
+                        }
+                        
+                    }
+                    else {
+                        //NotifyWindow notifyWindow = new NotifyWindow("更新提醒", "有更新", this);
+                        //notifyWindow.Show();
+                    }  
+                }));
+                
+            });
+            updateTask.Start();
         }
     }
 }

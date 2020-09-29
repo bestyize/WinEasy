@@ -47,6 +47,10 @@
     <ApplicationIcon>logo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -70,8 +74,11 @@
     <Compile Include="src\model\CmdManager.cs" />
     <Compile Include="src\model\NotifyEventListener.cs" />
     <Compile Include="src\model\ScreenShotManager.cs" />
+    <Compile Include="src\model\UpdateCheck.cs" />
+    <Compile Include="src\model\UpdateInfo.cs" />
     <Compile Include="src\model\WindowsDenfenderManager.cs" />
     <Compile Include="src\util\CmdHelper.cs" />
+    <Compile Include="src\util\HttpHelper.cs" />
     <Compile Include="src\view\NotifyWindow.xaml.cs">
       <DependentUpon>NotifyWindow.xaml</DependentUpon>
     </Compile>
@@ -110,6 +117,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -178,6 +186,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="about.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="lib\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
